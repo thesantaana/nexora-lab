@@ -15,7 +15,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
   return <>
     <header className="site-header">
       <NavLink to="/" className="brand" aria-label="NEXORA LAB 首页">
-        <span className="brand-mark">N</span><span>NEXORA LAB</span>
+        <img src={`${import.meta.env.BASE_URL}assets/nexora-wordmark.svg`} alt="NEXORA LAB" />
       </NavLink>
       <button className="menu-button" onClick={() => setOpen(v => !v)} aria-expanded={open} aria-label="打开导航">{open ? 'CLOSE' : 'MENU'}</button>
       <nav className={open ? 'nav open' : 'nav'}>

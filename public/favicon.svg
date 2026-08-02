@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">NEXORA favicon concept</title>
+  <desc id="desc">A black rounded square containing an original angular N monogram.</desc>
+  <rect width="512" height="512" rx="116" fill="#101010"/>
+  <path d="M132 356V156l248 200V156" fill="none" stroke="#f2f0ea" stroke-width="48" stroke-linecap="square" stroke-linejoin="miter"/>
+  <path d="M132 156h74" fill="none" stroke="#f2f0ea" stroke-width="18"/>
+  <path d="M306 156h74" fill="none" stroke="#f2f0ea" stroke-width="18"/>
+</svg>

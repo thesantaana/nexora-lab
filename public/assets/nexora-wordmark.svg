@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 300" role="img" aria-labelledby="title desc">
+  <title id="title">NEXORA LAB wordmark concept</title>
+  <desc id="desc">Original futuristic geometric wordmark in black on transparent background.</desc>
+  <g fill="none" stroke="#101010" stroke-width="18" stroke-linecap="square" stroke-linejoin="miter">
+    <!-- N: rising signal cut -->
+    <path d="M70 210V72L190 210V72"/>
+    <path d="M70 72h38" stroke-width="8"/>
+    <!-- E: open terminals -->
+    <path d="M272 72H392M272 72V210H392M272 140H370"/>
+    <!-- X: separated crossing blades -->
+    <path d="M472 72l46 57M574 210l-46-57M574 72l-46 57M472 210l46-57"/>
+    <!-- O: precision ring with top-right cut -->
+    <path d="M715 72h30c49 0 75 25 75 69s-26 69-75 69h-30c-49 0-75-25-75-69s26-69 75-69z"/>
+    <path d="M779 72l20 20" stroke="#f2f0ea" stroke-width="24"/>
+    <!-- R: open bowl and accelerated leg -->
+    <path d="M902 210V72h72c42 0 63 17 63 47s-21 47-63 47h-72M978 166l82 44"/>
+    <!-- A: bridge with split apex -->
+    <path d="M1142 210l61-138M1213 72l61 138M1170 154h76"/>
+  </g>
+  <g fill="#101010" font-family="Arial, Helvetica, sans-serif">
+    <text x="1320" y="119" font-size="34" font-weight="700" letter-spacing="9" transform="rotate(90 1320 119)">LAB</text>
+  </g>
+</svg>
