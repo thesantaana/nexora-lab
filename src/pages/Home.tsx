@@ -1,49 +1,71 @@
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { animate, stagger } from 'animejs';
 import { projects, services } from '../data/content';
 import { useLanguage } from '../state/language';
 import { Reveal } from '../components/Reveal';
-import { Marquee } from '../components/Marquee';
-import { ProjectCard } from '../components/ProjectCard';
 import { ContactPanel } from '../components/ContactPanel';
 
 export default function Home() {
   const { language } = useLanguage();
-  useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    animate('.hero-title-line', { translateY: [70, 0], opacity: [0, 1], duration: 900, delay: stagger(110), ease: 'outExpo' });
-  }, []);
-  return <>
-    <section className="hero">
-      <div className="hero-kicker"><span>INDEPENDENT DIGITAL STUDIO</span><span>CSU · CHANGSHA · 2026</span></div>
-      <h1><span className="hero-title-line">ENGINEERING</span><span className="hero-title-line">IDEAS INTO</span><span className="outline hero-title-line">RELIABLE</span><span className="hero-title-line">PRODUCTS.</span></h1>
-      <div className="hero-stage" aria-hidden="true">
-        <img src={`${import.meta.env.BASE_URL}assets/projects/civion-login.png`} alt="" />
-        <div className="hero-stage-shade" />
-        <span className="hero-stage-index">N / 01</span>
-        <span className="hero-stage-caption">CIVION · COMPUTER VISION</span>
-        <span className="hero-stage-status">SYSTEM ONLINE</span>
+  const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`;
+
+  return <div className={`k-home ${language === 'zh' ? 'lang-zh' : 'lang-en'}`}>
+    <section className="k-hero">
+      <div className="k-hero-media" aria-hidden="true">
+        <img src={asset('assets/nexora-hero.png')} className="active" alt="" />
+        <div className="k-hero-vignette" />
+        <div className="k-hero-scan" />
       </div>
-      <div className="hero-bottom">
-        <p>{language === 'zh' ? '将想法构建为可靠的数字产品。网站、软件、小程序与 AI 系统定制。' : 'Engineering ideas into reliable digital products — websites, software, mini programs and AI systems.'}</p>
-        <Link to="/work" className="circle-link" aria-label="查看案例"><span>{language === 'zh' ? '查看案例' : 'View work'}</span><b>↓</b></Link>
+      <div className="k-hero-copy">
+        <p className="k-overline">NEXORA LAB · DIGITAL PRODUCT STUDIO</p>
+        <h1>{language === 'zh' ? <>构建下一代<br />数字体验</> : <>Build what<br />comes next.</>}</h1>
+        <p className="k-hero-lead">{language === 'zh' ? '从网站、业务系统到 AI 应用，把复杂技术做成真正可靠、好用的产品。' : 'From websites and business systems to AI applications — turning complex technology into products people trust.'}</p>
+        <div className="k-hero-actions">
+          <Link className="k-button light" to="/contact">{language === 'zh' ? '开始合作' : 'Start a project'} <span>↗</span></Link>
+          <Link className="k-button glass" to="/work">{language === 'zh' ? '查看案例' : 'Explore work'}</Link>
+        </div>
       </div>
-      <div className="grid-orbit" aria-hidden="true"><i /><i /><i /><i /></div>
+      <div className="k-hero-foot">
+        <span>01 / NEXORA</span>
+        <div className="k-progress"><i /></div>
+        <span>SYSTEMS IN MOTION</span>
+      </div>
     </section>
-    <Marquee text="WEB · SOFTWARE · MINI PROGRAMS · AI SYSTEMS" />
-    <section className="statement section-pad">
-      <Reveal><span className="section-label">01 / STUDIO</span><h2>{language === 'zh' ? <>年轻的团队，<em>成熟的交付。</em></> : <>Young team. <em>Mature delivery.</em></>}</h2></Reveal>
-      <Reveal><p>{language === 'zh' ? '我们来自中南大学计算机学院，以扎实的工程能力、清晰的合作流程和灵活的成本，为每个项目提供从需求拆解到部署上线的完整支持。' : 'We are a student development team from CSU School of Computer Science, combining solid engineering, a clear process and flexible collaboration from discovery through launch.'}</p></Reveal>
+
+    <section className="k-intro">
+      <Reveal><p className="k-section-label">01 · WHAT WE DO</p></Reveal>
+      <Reveal><h2>{language === 'zh' ? <>一支小而精的技术团队，<br /><span>为真实业务交付完整产品。</span></> : <>A focused engineering team,<br /><span>shipping complete digital products.</span></>}</h2></Reveal>
+      <Reveal className="k-intro-meta"><p>{language === 'zh' ? '年轻、灵活、价格友好，同时坚持正式工作室级别的流程、代码质量与交付规范。' : 'Young, flexible and cost-friendly, with studio-grade process, code quality and delivery standards.'}</p><Link to="/about">{language === 'zh' ? '认识团队' : 'Meet the team'} <b>↗</b></Link></Reveal>
     </section>
-    <section className="featured section-pad">
-      <div className="section-head"><span className="section-label">02 / SELECTED WORK</span><Link to="/work">{language === 'zh' ? '全部案例' : 'All work'} ↗</Link></div>
-      <div className="project-grid"><ProjectCard project={projects[0]} large /><ProjectCard project={projects[1]} /><ProjectCard project={projects[2]} /><ProjectCard project={projects[3]} large /></div>
+
+    <section className="k-showcase">
+      <div className="k-section-head"><p className="k-section-label">02 · SELECTED WORK</p><Link to="/work">{language === 'zh' ? '查看全部' : 'View all'} ↗</Link></div>
+      <div className="k-feature-stack">
+        {projects.map((project, index) => <Reveal key={project.slug} className="k-feature-card">
+          <img src={asset(project.images[0].replace(/^\//, ''))} alt={`${project.title} ${language === 'zh' ? project.zh : project.en}`} />
+          <div className="k-feature-shade" />
+          <div className="k-feature-top"><span>0{index + 1}</span><span>{project.stack.slice(0, 2).join(' · ')}</span></div>
+          <div className="k-feature-copy"><p>{language === 'zh' ? project.zh : project.en}</p><h3>{project.title}</h3><span className="k-round-arrow">↗</span></div>
+        </Reveal>)}
+      </div>
     </section>
-    <section className="service-preview section-pad">
-      <div className="section-head"><span className="section-label">03 / CAPABILITIES</span><Link to="/services">{language === 'zh' ? '服务详情' : 'Details'} ↗</Link></div>
-      {services.map(s => <Reveal key={s.no} className="service-row"><span>{s.no}</span><h3>{language === 'zh' ? s.zh : s.en}</h3><p>{language === 'zh' ? s.detailZh : s.detailEn}</p><b>↗</b></Reveal>)}
+
+    <section className="k-capabilities">
+      <div className="k-section-head"><p className="k-section-label">03 · CAPABILITIES</p><Link to="/services">{language === 'zh' ? '服务详情' : 'All services'} ↗</Link></div>
+      <div className="k-cap-grid">
+        {services.slice(0, 4).map((service, index) => <Reveal key={service.no} className="k-cap-card">
+          <div><span>0{index + 1}</span><b>↗</b></div>
+          <h3>{language === 'zh' ? service.zh : service.en}</h3>
+          <p>{language === 'zh' ? service.detailZh : service.detailEn}</p>
+        </Reveal>)}
+      </div>
+    </section>
+
+    <section className="k-proof">
+      <Reveal className="k-proof-copy"><p className="k-section-label">04 · DELIVERY STANDARD</p><h2>{language === 'zh' ? '不是演示。是能上线、能维护、能持续迭代的产品。' : 'Not a demo. A product built to launch, maintain and evolve.'}</h2></Reveal>
+      <div className="k-proof-list">
+        {['需求拆解 / Discovery', '界面与架构 / Design', '开发与测试 / Build', '部署与售后 / Support'].map((item, index) => <Reveal key={item}><span>0{index + 1}</span><p>{item}</p><b>●</b></Reveal>)}
+      </div>
     </section>
     <ContactPanel />
-  </>;
+  </div>;
 }
