@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { useLanguage } from '../state/language';
+import { BrandIntro } from './BrandIntro';
 
 const nav = [
   ['/', '首页', 'Home'], ['/services', '服务', 'Services'], ['/work', '案例', 'Work'],
@@ -13,9 +14,11 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
   const location = useLocation();
   useEffect(() => { setOpen(false); window.scrollTo({ top: 0, behavior: 'instant' }); }, [location.pathname]);
   return <>
+    <BrandIntro />
     <header className="site-header">
       <NavLink to="/" className="brand" aria-label="NEXORA LAB 首页">
-        <img src={`${import.meta.env.BASE_URL}assets/nexora-wordmark.svg`} alt="NEXORA LAB" />
+        <span className="brand-symbol" aria-hidden="true"><i /><i /><i /></span>
+        <span className="brand-name">NEXORA</span><small>LAB</small>
       </NavLink>
       <button className="menu-button" onClick={() => setOpen(v => !v)} aria-expanded={open} aria-label="打开导航">{open ? 'CLOSE' : 'MENU'}</button>
       <nav className={open ? 'nav open' : 'nav'}>

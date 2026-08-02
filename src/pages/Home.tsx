@@ -18,6 +18,13 @@ export default function Home() {
     <section className="hero">
       <div className="hero-kicker"><span>INDEPENDENT DIGITAL STUDIO</span><span>CSU · CHANGSHA · 2026</span></div>
       <h1><span className="hero-title-line">ENGINEERING</span><span className="hero-title-line">IDEAS INTO</span><span className="outline hero-title-line">RELIABLE</span><span className="hero-title-line">PRODUCTS.</span></h1>
+      <div className="hero-stage" aria-hidden="true">
+        <img src={`${import.meta.env.BASE_URL}assets/projects/civion-login.png`} alt="" />
+        <div className="hero-stage-shade" />
+        <span className="hero-stage-index">N / 01</span>
+        <span className="hero-stage-caption">CIVION · COMPUTER VISION</span>
+        <span className="hero-stage-status">SYSTEM ONLINE</span>
+      </div>
       <div className="hero-bottom">
         <p>{language === 'zh' ? '将想法构建为可靠的数字产品。网站、软件、小程序与 AI 系统定制。' : 'Engineering ideas into reliable digital products — websites, software, mini programs and AI systems.'}</p>
         <Link to="/work" className="circle-link" aria-label="查看案例"><span>{language === 'zh' ? '查看案例' : 'View work'}</span><b>↓</b></Link>
